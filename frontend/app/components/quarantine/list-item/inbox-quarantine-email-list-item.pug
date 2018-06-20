@@ -1,0 +1,19 @@
+.inbox-list-item-content.clickable
+  .inbox-item-with-icon
+    .list-image.badge-container
+      inbox-emailer-avatar(emailer="$ctrl.email.sender" )
+    .media-body
+      .inbox-list-item-subject-and-from
+        .inbox-subject.lv-title
+          span.inbox-subject-inline {{ $ctrl.email.subject }}
+          span.inbox-preview-inline.inbox-preview-divider -
+          //- .inbox-preview-inline.lv-small.preview(ng-if="item.preview") {{ item.preview }}
+      .inbox-list-item-date-and-indicators
+        .date-and-indicators-container
+          .indicators.esn-flex-noshrink.visible-xl
+            ul.actions.flex-vertical-centered
+              li.action-item
+                i.flag-icon.mdi.mdi-download
+          .date-container
+          span {{ $ctrl.email.lastUpdated | inboxItemDate }}
+  //- .inbox-preview-block.preview {{ item.preview }}

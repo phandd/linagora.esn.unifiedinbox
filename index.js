@@ -126,7 +126,15 @@ const angularAppFiles = [
   'components/forwardings/subheader/inbox-forwardings-subheader.component.js',
   'services/common/inbox-restangular.service.js',
   'services/forwardings/inbox-forwardings.service.js',
-  'services/forwardings/inbox-forwardings-api-client.service.js'
+  'services/forwardings/inbox-forwardings-api-client.service.js',
+  'components/quarantine/inbox-quarantine.run.js',
+  'components/quarantine/inbox-quarantine-email.model.js',
+  'components/quarantine/inbox-quarantine-email.constant.js',
+  'components/quarantine/inbox-quarantine-email.service.js',
+  'components/quarantine/list/inbox-quarantine-email-list.controller.js',
+  'components/quarantine/list/inbox-quarantine-email-list.component.js',
+  'components/quarantine/list-item/inbox-quarantine-email-list-item.controller.js',
+  'components/quarantine/list-item/inbox-quarantine-email-list-item.component.js'
 ];
 
 const angularJsFiles = [
