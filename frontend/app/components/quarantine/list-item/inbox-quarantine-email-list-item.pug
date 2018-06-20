@@ -1,19 +1,23 @@
-.inbox-list-item-content.clickable
-  .inbox-item-with-icon
-    .list-image.badge-container
-      inbox-emailer-avatar(emailer="$ctrl.email.sender" )
-    .media-body
-      .inbox-list-item-subject-and-from
-        .inbox-subject.lv-title
-          span.inbox-subject-inline {{ $ctrl.email.subject }}
-          span.inbox-preview-inline.inbox-preview-divider -
-          //- .inbox-preview-inline.lv-small.preview(ng-if="item.preview") {{ item.preview }}
-      .inbox-list-item-date-and-indicators
-        .date-and-indicators-container
-          .indicators.esn-flex-noshrink.visible-xl
-            ul.actions.flex-vertical-centered
-              li.action-item
-                i.flag-icon.mdi.mdi-download
-          .date-container
-          span {{ $ctrl.email.lastUpdated | inboxItemDate }}
-  //- .inbox-preview-block.preview {{ item.preview }}
+.quarantine-email-list-item
+  .quarantine-email-sender-avatar
+    esn-avatar(ng-if='$ctrl.email.sender._id', user-id="$ctrl.email.sender._id" )
+    esn-avatar(ng-if='!$ctrl.email.sender._id', user-email="$ctrl.email.sender.email" )
+  .quarantine-email-body
+    .quarantine-email-sender-and-recipients
+      .quarantine-email-sender
+        //- span {{ $ctrl.email.sender.displayName }}
+        //- span.email
+        //-   | <
+        //-   a(op-inbox-compose, ng-href="mailto:{{ $ctrl.email.sender.email }}")
+        //-     span {{ $ctrl.email.sender.email }}
+        //-   | >
+        inbox-emailer(emailer='$ctrl.email.sender')
+      .quarantine-email-recipients
+        span(ng-if='$ctrl.email.recipients.length !== 1')
+          | #{__('%s recipients', "{{::$ctrl.email.recipients.length}}")}
+        span(ng-if='$ctrl.email.recipients.length === 1')
+          | #{__('%s recipient', "{{::$ctrl.email.recipients.length}}")}
+    .quarantine-email-subject
+      span.email-subject {{::$ctrl.email.subject}}
+  .quarantine-email-date
+    span {{::$ctrl.email.lastUpdated | inboxItemDate}}

@@ -33,10 +33,12 @@
     var repo = 'file://var/mail/sample/';
 
     jamesWebadminClient.listMailRepositoryMails(repo).then(function(mails) {
-      console.log(111, mails);
+      // console.log(111, mails);
 
       mails.forEach(function(mailKey) {
-        jamesWebadminClient.getMailRepositoryMail(repo, mailKey).then(function(detail) {
+        jamesWebadminClient.getMailRepositoryMail(repo, mailKey, {
+          additionalFields: ['attributes', 'headers', 'textBody', 'htmlBody', 'messageSize']
+        }).then(function(detail) {
           console.log(222, mailKey, detail);
         });
       });

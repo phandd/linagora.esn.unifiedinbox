@@ -2,7 +2,7 @@
   infinite-list(load-more-elements='$ctrl.loadMoreElements()', scroll-inside-container="$ctrl.scrollInsideContainer")
     .listview.lv-bordered.lv-lg(ng-if="$ctrl.elements.length > 0")
       .lv-body
-        inbox-quarantine-email-list-item.clickable(email-key="email", ng-repeat="email in $ctrl.elements")
+        inbox-quarantine-email-list-item(email-key="email", ng-repeat="email in $ctrl.elements")
   .empty-message(ng-if="!$ctrl.elements.length && $ctrl.infiniteScrollCompleted")
     .message
       | #{__('No quarantined email')}

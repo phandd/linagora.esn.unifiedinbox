@@ -1,5 +1,53 @@
 inbox-quarantine-email-list-item {
-  .inbox-list-item-content {
-    &:extend(.inbox-root .inbox-items-group .inbox-list-item .inbox-list-item-content);
+  .quarantine-email-list-item {
+    .flex-space-between;
+    .flex-vertical-centered;
+
+    padding: 4px 10px;
+    border-bottom: 1px solid @inputBorderColor;
+
+    .quarantine-email-sender-avatar {
+      padding: 4px 12px;
+
+      img {
+        .avatar(40px);
+      }
+    }
+
+    .quarantine-email-body {
+      .flex-row;
+      .flex-start;
+      .flex-shorthand(1, 1);
+      .flex-vertical-centered;
+
+      .quarantine-email-sender-and-recipients {
+        .flex-column;
+
+        width: 300px;
+
+        .quarantine-email-sender span {
+          &.email {
+            margin-left: 4px;
+          }
+        }
+
+        .quarantine-email-recipients span {
+          font-size: 12px;
+          color: @lighterSecondaryTextColor;
+        }
+      }
+
+      .quarantine-email-subject {
+        .flex-start;
+        .ellipsis;
+
+        span {
+          font-weight: 400;
+        }
+      }
+    }
+
+    .quarantine-email-date {
+    }
   }
 }

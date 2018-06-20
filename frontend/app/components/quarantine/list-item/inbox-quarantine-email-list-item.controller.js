@@ -5,8 +5,12 @@
     .controller('inboxQuarantineEmailListItemController', inboxQuarantineEmailListItemController);
 
   function inboxQuarantineEmailListItemController(
+    _,
+    $q,
     jamesWebadminClient,
     InboxQuarantineEmail,
+    userAPI,
+    userUtils,
     INBOX_QUARANTINE_REPOSITORY
   ) {
     var self = this;
@@ -15,9 +19,30 @@
 
     function $onInit() {
       jamesWebadminClient.getMailRepositoryMail(INBOX_QUARANTINE_REPOSITORY, self.emailKey)
+        .then(populateSender)
         .then(function(email) {
           self.email = new InboxQuarantineEmail(email);
-          self.numberOfRecipients = email.recipients && email.recipients.length;
+        });
+    }
+
+    function populateSender(email) {
+      if (!email.sender) {
+        return $q.when(email);
+      }
+
+      return userAPI.getUsersByEmail(email.sender)
+        .then(function(response) {
+          email.sender = {
+            email: email.sender
+          };
+
+          if (response.data && response.data[0]) {
+            _.assign(email.sender, response.data[0], {
+              name: userUtils.displayNameOf(response.data[0])
+            });
+          }
+          console.log(222, email);
+          return email;
         });
     }
   }
