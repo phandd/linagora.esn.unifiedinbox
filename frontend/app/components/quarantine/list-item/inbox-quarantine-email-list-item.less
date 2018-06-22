@@ -5,6 +5,7 @@ inbox-quarantine-email-list-item {
 
     padding: 4px 10px;
     border-bottom: 1px solid @inputBorderColor;
+    position: relative;
 
     .quarantine-email-sender-avatar {
       padding: 4px 12px;
@@ -12,6 +13,15 @@ inbox-quarantine-email-list-item {
       img {
         .avatar(40px);
       }
+    }
+
+    .quarantine-email-item {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
 
     .quarantine-email-body {

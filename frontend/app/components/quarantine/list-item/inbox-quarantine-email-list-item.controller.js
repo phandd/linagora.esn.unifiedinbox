@@ -19,13 +19,14 @@
 
     function $onInit() {
       jamesWebadminClient.getMailRepositoryMail(INBOX_QUARANTINE_REPOSITORY, self.emailKey)
-        .then(populateSender)
+        .then(_populateSender)
         .then(function(email) {
           self.email = new InboxQuarantineEmail(email);
+          console.log(123123, self.email);
         });
     }
 
-    function populateSender(email) {
+    function _populateSender(email) {
       if (!email.sender) {
         return $q.when(email);
       }
@@ -41,7 +42,7 @@
               name: userUtils.displayNameOf(response.data[0])
             });
           }
-          console.log(222, email);
+
           return email;
         });
     }

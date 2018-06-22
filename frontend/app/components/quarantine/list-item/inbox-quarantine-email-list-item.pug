@@ -1,16 +1,15 @@
 .quarantine-email-list-item
+  a.quarantine-email-item(
+    href='',
+    esn-modal-launcher='/unifiedinbox/app/components/quarantine/modal/inbox-quarantine-email-view.html',
+    backdrop='static'
+  )
   .quarantine-email-sender-avatar
     esn-avatar(ng-if='$ctrl.email.sender._id', user-id="$ctrl.email.sender._id" )
     esn-avatar(ng-if='!$ctrl.email.sender._id', user-email="$ctrl.email.sender.email" )
   .quarantine-email-body
     .quarantine-email-sender-and-recipients
       .quarantine-email-sender
-        //- span {{ $ctrl.email.sender.displayName }}
-        //- span.email
-        //-   | <
-        //-   a(op-inbox-compose, ng-href="mailto:{{ $ctrl.email.sender.email }}")
-        //-     span {{ $ctrl.email.sender.email }}
-        //-   | >
         inbox-emailer(emailer='$ctrl.email.sender')
       .quarantine-email-recipients
         span(ng-if='$ctrl.email.recipients.length !== 1')
